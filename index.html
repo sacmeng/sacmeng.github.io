@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Isaac Wallace-Menge</title>
+<link rel="canonical" href="https://sacmeng.github.io/">
+<meta name="description" content="Isaac Wallace-Menge is an analyst at Deloitte Consulting in San Francisco working on AI products and capital projects, and co-founder of Jefe, an iPhone app that turns spoken site walks into contractor estimates.">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Isaac Wallace-Menge">
+<meta property="og:description" content="Analyst at Deloitte Consulting working on AI products and capital projects. Co-founder of Jefe, an iPhone app for contractors.">
+<meta property="og:url" content="https://sacmeng.github.io/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,700;1,400&display=swap">
+
+<!-- Structured data: tells search engines and sourcing tools who this is, which profiles are his, and that he made Jefe. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://sacmeng.github.io/#isaac",
+      "name": "Isaac Wallace-Menge",
+      "alternateName": "Isaac Menge",
+      "url": "https://sacmeng.github.io/",
+      "description": "Analyst at Deloitte Consulting working on AI products and capital projects. Builds AI agents for enterprise clients, runs project controls for a $280M+ renovation program, and co-founded Jefe, an iPhone app for contractors.",
+      "jobTitle": "Analyst",
+      "worksFor": { "@type": "Organization", "name": "Deloitte Consulting" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of Colorado Boulder, Leeds School of Business" },
+      "address": { "@type": "PostalAddress", "addressLocality": "San Francisco", "addressRegion": "CA" },
+      "knowsAbout": ["Product management", "AI agents", "LLM applications", "Model Context Protocol (MCP)", "Program management", "Project controls", "Cost estimating", "Bid leveling", "Financial modeling", "Project finance", "Solution design", "Go-to-market", "SQL", "Python", "Power BI", "Oracle ERP"],
+      "sameAs": [
+        "https://www.linkedin.com/in/isaac-wallace-menge/",
+        "https://github.com/sacmeng",
+        "https://ca-eli.org/author/isaac-wallace-menge/"
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Jefe: Voice Estimate Maker",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "iOS",
+      "url": "https://apps.apple.com/us/app/jefe-voice-estimate-maker/id6761315709",
+      "creator": { "@id": "https://sacmeng.github.io/#isaac" }
+    }
+  ]
+}
+</script>
+
+<style>
+/* One family (Schibsted Grotesk) for everything; the name is the only loud thing.
+   Below it, a printed-CV layout: section names hang in a left column, entries read down the right. */
+:root {
+  --paper: #f7f7f5;
+  --ink: #1d1f21;
+  --soft: #5d6166;
+  --rule: #dcdcd7;
+  --link: #24508f;
+
+  --font: "Schibsted Grotesk", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --measure: 40rem;
+  --hang: 10.5rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #17191b; --ink: #e9e9e6; --soft: #9da1a6; --rule: #2d3034; --link: #94b8ee;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #17191b; --ink: #e9e9e6; --soft: #9da1a6; --rule: #2d3034; --link: #94b8ee;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+.page { max-width: 58rem; margin: 0 auto; padding-block: clamp(3rem, 9vw, 7rem) 4rem; }
+
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 2px; }
+
+/* Intro: the name carries the page */
+.intro { margin-bottom: clamp(3.5rem, 8vw, 5.5rem); }
+.intro h1 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2.75rem, 9vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+}
+.intro p { margin: 0; max-width: var(--measure); font-size: clamp(1.15rem, 2.2vw, 1.35rem); line-height: 1.45; }
+.intro p + p { margin-top: 0.9rem; }
+.profiles { display: flex; flex-wrap: wrap; gap: 0.4rem 1.6rem; margin: 1.75rem 0 0; padding: 0; list-style: none; font-weight: 500; }
+
+/* Hanging sections */
+section {
+  display: grid;
+  grid-template-columns: var(--hang) minmax(0, 1fr);
+  gap: 0 2rem;
+  padding-top: 1.4rem;
+  margin-top: 2.75rem;
+  border-top: 1px solid var(--rule);
+}
+section > h2 { margin: 0; font-size: 1rem; font-weight: 500; color: var(--soft); line-height: 1.6; }
+section > .body { max-width: var(--measure); display: grid; gap: 2.25rem; }
+section p { margin: 0; }
+
+/* Entries */
+.entry { display: grid; gap: 0.35rem; }
+.entry header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0 1rem; }
+.entry h3 { margin: 0; font-size: 1.125rem; font-weight: 700; letter-spacing: -0.01em; }
+.entry time { font-variant-numeric: tabular-nums; color: var(--soft); font-size: 0.95rem; white-space: nowrap; }
+.entry .role { color: var(--soft); }
+.entry ul { margin: 0.5rem 0 0; padding-left: 1.1rem; display: grid; gap: 0.45rem; }
+.entry li::marker { color: var(--soft); }
+.entry .note { margin-top: 0.4rem; }
+
+.earlier { display: grid; gap: 1.6rem; }
+
+footer {
+  margin-top: 4.5rem; padding-top: 1.4rem; border-top: 1px solid var(--rule);
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1.5rem;
+  color: var(--soft); font-size: 0.95rem;
+}
+
+@media (max-width: 720px) {
+  section { grid-template-columns: 1fr; gap: 0.9rem; }
+  section > .body { gap: 2rem; }
+}
+</style>
+</head>
+<body>
+<main class="page">
+
+  <header class="intro">
+    <h1>Isaac Wallace&#8209;Menge</h1>
+    <p>I'm an analyst at Deloitte Consulting in San Francisco. I build AI agents and tools for enterprise clients, and I run project controls for a $280M+ retail renovation program.</p>
+    <p>I also co-founded <a href="https://apps.apple.com/us/app/jefe-voice-estimate-maker/id6761315709">Jefe</a>, an iPhone app that turns a contractor's spoken site walk into a finished estimate. It launched on the App Store in September 2026.</p>
+    <ul class="profiles">
+      <li><a href="https://www.linkedin.com/in/isaac-wallace-menge/">LinkedIn</a></li>
+      <li><a href="https://github.com/sacmeng">GitHub</a></li>
+      <li><a href="https://apps.apple.com/us/app/jefe-voice-estimate-maker/id6761315709">Jefe on the App Store</a></li>
+    </ul>
+  </header>
+
+  <section aria-labelledby="now-h">
+    <h2 id="now-h">Now</h2>
+    <div class="body">
+
+      <article class="entry">
+        <header>
+          <h3>Deloitte Consulting</h3>
+          <time>Jan 2026 – present</time>
+        </header>
+        <span class="role">Analyst, San Francisco</span>
+        <ul>
+          <li>Lead development of 10 role-specific AI agents connected to Oracle ERP for a global supplier's 5,000+ supply chain employees. The agents are now being rolled out to other clients.</li>
+          <li>Built a custom MCP server that connects AI to a program's financials and vendor contracts. It drafts SOWs, levels bids and reviews change orders, cutting manual work by 30%.</li>
+          <li>Run project controls for a $280M+ flagship store renovation program at one of the world's largest tech companies, including the model that decides which stores are renovated in each wave. Main client contact for 5 general contractors and 10 vendors.</li>
+          <li>Built the baseline cost estimate for a standard store renovation, leveled $3M+ in general contractor bids, and caught $500K+ in pricing errors in change orders.</li>
+          <li>Coordinated finance, supply chain and HR workstreams for a 20,000+ user ERP go-live, tracking risks daily and briefing the C-suite to keep the launch on schedule.</li>
+          <li>Demoed an AI supply chain solution to executives at Oracle AI World 2026, which led to 50+ follow-up conversations and deep-dive demos.</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <header>
+          <h3>Jefe</h3>
+          <time>Jan 2026 – present</time>
+        </header>
+        <span class="role">Co-founder and product lead</span>
+        <p class="note">An iPhone app for landscapers, plumbers, electricians, HVAC techs and home inspectors. You talk through a job as you walk it, and Jefe turns the recording into an estimate, invoice or work order. When it isn't sure of a price, it flags the line instead of guessing.</p>
+        <ul>
+          <li>Shipped 100+ builds in 5 weeks, taking the app from beta to a production release on the App Store.</li>
+          <li>Speech-to-text runs on the phone, so job-site audio never leaves the device. An LLM turns the transcript into line items.</li>
+          <li>Set pricing, built subscriptions and a free tier, and run go-to-market through paid ads, the App Store and contractor groups, tracking conversion weekly.</li>
+        </ul>
+      </article>
+
+    </div>
+  </section>
+
+  <section aria-labelledby="before-h">
+    <h2 id="before-h">Before</h2>
+    <div class="body earlier">
+
+      <article class="entry">
+        <header>
+          <h3>Hitachi Energy</h3>
+          <time>May – Dec 2024</time>
+        </header>
+        <span class="role">Energy market analyst intern, Broomfield, CO</span>
+        <p class="note">Built Power BI dashboards tracking 10+ daily energy market data pipelines, and SQL and Python ETL scripts that added 30,000+ records to production datasets.</p>
+      </article>
+
+      <article class="entry">
+        <header>
+          <h3>AMP Robotics</h3>
+          <time>Nov 2023 – Apr 2024</time>
+        </header>
+        <span class="role">Finance intern, Louisville, CO</span>
+        <p class="note">Built a project finance model executives used to rank projects and forecast revenue and EBITDA. Produced 10+ monthly budget reports and maintained the Oracle PBCS planning system.</p>
+      </article>
+
+      <article class="entry">
+        <header>
+          <h3>DivcoWest</h3>
+          <time>Jun – Aug 2023</time>
+        </header>
+        <span class="role">Summer analyst, San Francisco</span>
+        <p class="note">Underwrote a 31-acre mixed-use redevelopment and analyzed 450+ prospective tenants.</p>
+      </article>
+
+      <article class="entry">
+        <header>
+          <h3>Earthvisionz</h3>
+          <time>Jan – Jul 2023</time>
+        </header>
+        <span class="role">Product marketing intern, Boulder, CO</span>
+      </article>
+
+      <article class="entry">
+        <header>
+          <h3>Commercial salmon fishing</h3>
+          <time>Summer 2022</time>
+        </header>
+        <span class="role">Deckhand, Bristol Bay, AK</span>
+        <p class="note">Helped land a boat-record 100,000+ lb sockeye catch while handling safety checks on deck.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <section aria-labelledby="edu-h">
+    <h2 id="edu-h">Education</h2>
+    <div class="body">
+      <article class="entry">
+        <header>
+          <h3>University of Colorado Boulder</h3>
+          <time>Graduated Dec 2024</time>
+        </header>
+        <span class="role">Leeds School of Business</span>
+        <p class="note">B.S. Business Administration in Finance and Business Analytics, with Honors. 3.75 GPA, Dean's List 6 of 7 semesters.</p>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="skills-h">
+    <h2 id="skills-h">Skills</h2>
+    <div class="body">
+      <p>Product management, AI agents and LLM applications, MCP, Claude Code, program management and project controls, cost estimating and bid leveling, financial modeling and project finance, vendor management, go-to-market. SQL, Python, ETL, Power BI, Excel, Oracle ERP and PBCS.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="else-h">
+    <h2 id="else-h">Outside work</h2>
+    <div class="body">
+      <p>Fly fishing, surfing and traveling to surf, classic rock, Toyotas and sourdough. I also built an <a href="https://github.com/sacmeng/baja-trip">interactive map for a Baja surf trip</a>.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Isaac Wallace-Menge, San Francisco</span>
+    <span><a href="https://www.linkedin.com/in/isaac-wallace-menge/">LinkedIn</a>&ensp;<a href="https://github.com/sacmeng">GitHub</a></span>
+  </footer>
+
+</main>
+</body>
+</html>
