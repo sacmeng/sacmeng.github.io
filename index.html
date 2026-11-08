@@ -131,6 +131,11 @@ img { max-width: 100%; display: block; }
 .project img { width: 100%; height: auto; aspect-ratio: 1200 / 750; object-fit: cover; border-radius: 10px; border: 1px solid var(--rule); }
 .project h3 { margin: 0; font-size: 1.125rem; font-weight: 600; }
 
+/* Travel photos: a row of landscapes over a row of portraits */
+.photos { list-style: none; margin: 0.5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; }
+.photos img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; aspect-ratio: 3 / 4; }
+.photos .wide img { aspect-ratio: 4 / 3; }
+
 /* Path: the CV, one line per role */
 .path { list-style: none; margin: 0; padding: 0; display: grid; }
 .path li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1rem; padding: 0.65rem 0; border-bottom: 1px solid var(--rule); }
@@ -154,6 +159,8 @@ footer { padding-top: 1.25rem; border-top: 1px solid var(--rule); color: var(--f
   .shots { grid-template-columns: repeat(3, 62%); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.5rem; }
   .shots li { scroll-snap-align: start; }
   .path li { grid-template-columns: 4.75rem minmax(0, 1fr); }
+  .photos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .photos img, .photos .wide img { aspect-ratio: 4 / 5; }
 }
 </style>
 </head>
@@ -241,6 +248,14 @@ footer { padding-top: 1.25rem; border-top: 1px solid var(--rule); color: var(--f
     <section aria-labelledby="travel-h">
       <h2 id="travel-h">A year of travel</h2>
       <p>After I graduated, my Deloitte start date got pushed back a year, so I took the chance to travel. I spent most of it in Southeast Asia, with Indonesia, Vietnam, the Philippines and Sri Lanka as the highlights. I was chasing waves, climbing volcanoes, riding motorbikes and having the time of my life.</p>
+      <ul class="photos" aria-label="Photos from the year">
+        <li class="wide"><img src="img/travel-volcano-sunrise.jpg" alt="Isaac at sunrise on a volcano trail above the clouds" loading="lazy" width="480" height="360"></li>
+        <li class="wide"><img src="img/travel-surf.jpg" alt="Isaac surfing a breaking wave" loading="lazy" width="480" height="360"></li>
+        <li class="wide"><img src="img/travel-above-clouds.jpg" alt="A camp above a sea of clouds below a volcanic peak" loading="lazy" width="480" height="360"></li>
+        <li><img src="img/travel-mountain-road.jpg" alt="A switchback mountain road through green hills" loading="lazy" width="360" height="480"></li>
+        <li><img src="img/travel-cave.jpg" alt="A boat heading out of a river cave toward daylight" loading="lazy" width="360" height="480"></li>
+        <li><img src="img/travel-boat.jpg" alt="The bow of a boat on calm blue water" loading="lazy" width="360" height="480"></li>
+      </ul>
     </section>
 
     <section aria-labelledby="path-h">
