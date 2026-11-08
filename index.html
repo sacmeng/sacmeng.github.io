@@ -50,89 +50,110 @@
 </script>
 
 <style>
-/* Sidebar CV. Left: who he is, pinned on wide screens. Right: the record.
-   One family, one left edge per column, links quiet until hovered. */
+/* Portfolio, not a CV. Pale-blue sidebar holds who he is; the main column shows the work
+   as short stories with real images, and the CV shrinks to a one-line-per-role "Path". */
 :root {
-  --paper: #f6f6f3;
-  --ink: #1c1e20;
-  --soft: #63676c;
-  --faint: #8b8f94;
-  --rule: #e0e0db;
-  --accent: #1f5c4a;
+  --paper: #ffffff;
+  --band: #eef4f9;
+  --ink: #111a22;
+  --soft: #56636e;
+  --faint: #85909a;
+  --rule: #e3e8ec;
+  --accent: #1a5d94;
 
   --font: "Schibsted Grotesk", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --side: 22rem;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #161819; --ink: #ebebe8; --soft: #a3a7ab; --faint: #7b7f84; --rule: #2b2e31; --accent: #7cc4a8;
+    --paper: #11161b; --band: #172029; --ink: #e6ebef; --soft: #9aa7b2; --faint: #73808b; --rule: #26313b; --accent: #86b8e6;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --paper: #161819; --ink: #ebebe8; --soft: #a3a7ab; --faint: #7b7f84; --rule: #2b2e31; --accent: #7cc4a8;
+  --paper: #11161b; --band: #172029; --ink: #e6ebef; --soft: #9aa7b2; --faint: #73808b; --rule: #26313b; --accent: #86b8e6;
   color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
 body {
   margin: 0;
-  background: var(--paper);
   color: var(--ink);
   font-family: var(--font);
   font-size: 1rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  padding-left: max(24px, env(safe-area-inset-left, 0px));
-  padding-right: max(24px, env(safe-area-inset-right, 0px));
+  /* the sidebar band runs the full height of the page */
+  background: linear-gradient(90deg, var(--band) 0, var(--band) calc(max(0px, 50% - 36rem) + var(--side)), var(--paper) 0);
 }
 
-a { color: inherit; text-decoration: underline; text-decoration-color: var(--rule); text-decoration-thickness: 1.5px; text-underline-offset: 0.22em; }
-a:hover { color: var(--accent); text-decoration-color: currentColor; }
+a { color: var(--accent); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent); text-decoration-thickness: 1.5px; text-underline-offset: 0.22em; }
+a:hover { text-decoration-color: currentColor; }
 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+img { max-width: 100%; display: block; }
 
-.page {
-  max-width: 68rem; margin: 0 auto;
-  display: grid; grid-template-columns: 19rem minmax(0, 1fr); gap: 0 5rem;
-  padding-block: 5.5rem 4rem;
-}
+.page { max-width: 72rem; margin: 0 auto; display: grid; grid-template-columns: var(--side) minmax(0, 1fr); }
 
 /* Sidebar */
-.side { align-self: start; position: sticky; top: calc(5.5rem + env(safe-area-inset-top, 0px)); }
+.side { padding: 5.5rem 2.5rem 3rem max(24px, env(safe-area-inset-left, 0px)); }
+.side-inner { position: sticky; top: calc(5.5rem + env(safe-area-inset-top, 0px)); }
 .side h1 { margin: 0; font-size: 2rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; }
 .side .title { margin: 0.6rem 0 0; color: var(--soft); line-height: 1.45; }
 .side .bio { margin: 1.5rem 0 0; }
+.side .bio + .bio { margin-top: 0.9rem; }
 .side .links { list-style: none; margin: 1.75rem 0 0; padding: 0; display: grid; gap: 0.35rem; font-weight: 500; }
 .side .where { margin: 1.75rem 0 0; color: var(--faint); font-size: 0.9rem; }
 
 /* Main column */
-.main { display: grid; gap: 3.75rem; max-width: 42rem; }
-section { display: grid; gap: 1.75rem; }
-section h2 { margin: 0; font-size: 0.95rem; font-weight: 600; color: var(--soft); padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule); }
-section p { margin: 0; }
+.main { padding: 5.5rem max(24px, env(safe-area-inset-right, 0px)) 4rem 4.5rem; display: grid; gap: 4.5rem; align-content: start; }
+.main > section { max-width: 44rem; display: grid; gap: 1.75rem; }
+.main h2 { margin: 0; font-size: 0.95rem; font-weight: 600; color: var(--accent); padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule); }
+.main p { margin: 0; }
+.meta { color: var(--faint); font-size: 0.92rem; }
 
-.entry { display: grid; gap: 0.15rem; }
-.entry header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0 1rem; }
-.entry h3 { margin: 0; font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.01em; }
-.entry time { color: var(--faint); font-size: 0.9rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.entry .role { color: var(--soft); }
-.entry ul { margin: 0.75rem 0 0; padding-left: 1.05rem; display: grid; gap: 0.5rem; }
-.entry li::marker { color: var(--faint); }
-.entry .note { margin-top: 0.6rem; }
+/* Jefe */
+.venture { display: grid; gap: 1rem; }
+.venture-head { display: flex; align-items: center; gap: 0.85rem; }
+.venture-head img { width: 3rem; height: 3rem; border-radius: 0.75rem; }
+.venture-head h3 { margin: 0; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+.shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; margin: 0.75rem 0 0.25rem; padding: 0; list-style: none; }
+.shots img { width: 100%; height: auto; aspect-ratio: 1320 / 2868; object-fit: cover; border-radius: 14px; background: #1d1d1b; }
 
-.entry header:has(.jefe-name) { align-items: center; }
-.jefe-name { display: inline-flex; align-items: center; gap: 0.6rem; }
-.jefe-name img { width: 1.75rem; height: 1.75rem; border-radius: 0.45rem; }
+/* Selected work */
+.work { display: grid; gap: 2.25rem; }
+.piece { display: grid; gap: 0.35rem; }
+.piece h3 { margin: 0; font-size: 1.125rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.35; }
+.piece p { margin-top: 0.3rem; }
 
-.stack { display: grid; gap: 2.25rem; }
+/* Side project */
+.project { display: grid; gap: 0.9rem; }
+.project figure { margin: 0; }
+.project img { width: 100%; height: auto; aspect-ratio: 1200 / 750; object-fit: cover; border-radius: 10px; border: 1px solid var(--rule); }
+.project h3 { margin: 0; font-size: 1.125rem; font-weight: 600; }
 
-footer { grid-column: 1 / -1; margin-top: 5rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); color: var(--faint); font-size: 0.9rem; }
+/* Path: the CV, one line per role */
+.path { list-style: none; margin: 0; padding: 0; display: grid; }
+.path li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1rem; padding: 0.65rem 0; border-bottom: 1px solid var(--rule); }
+.path li:last-child { border-bottom: 0; }
+.path .yr { color: var(--faint); font-variant-numeric: tabular-nums; }
+.path b { font-weight: 600; }
+.path span.where-at { color: var(--soft); }
 
+footer { padding-top: 1.25rem; border-top: 1px solid var(--rule); color: var(--faint); font-size: 0.9rem; max-width: 44rem; }
+
+@media (max-width: 1000px) {
+  .main { padding-left: 3rem; }
+}
 @media (max-width: 860px) {
-  .page { grid-template-columns: 1fr; padding-block: 3rem 3rem; }
-  .side { position: static; margin-bottom: 3.5rem; }
+  body { background: var(--paper); }
+  .page { grid-template-columns: 1fr; }
+  .side { background: var(--band); padding: 3rem max(20px, env(safe-area-inset-right, 0px)) 2.5rem max(20px, env(safe-area-inset-left, 0px)); }
+  .side-inner { position: static; }
   .side .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; }
-  .main { gap: 3rem; }
-  footer { margin-top: 3.5rem; }
+  .main { padding: 3rem max(20px, env(safe-area-inset-right, 0px)) 3rem max(20px, env(safe-area-inset-left, 0px)); gap: 3.5rem; }
+  .shots { grid-template-columns: repeat(3, 62%); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.5rem; }
+  .shots li { scroll-snap-align: start; }
+  .path li { grid-template-columns: 4.75rem minmax(0, 1fr); }
 }
 </style>
 </head>
@@ -140,126 +161,106 @@ footer { grid-column: 1 / -1; margin-top: 5rem; padding-top: 1.25rem; border-top
 <div class="page">
 
   <header class="side">
-    <h1>Isaac Wallace&#8209;Menge</h1>
-    <p class="title">Analyst at Deloitte Consulting.<br>Co-founder of Jefe.</p>
-    <p class="bio">I build AI agents and tools for enterprise clients and run project controls for a multi-site retail renovation program. On the side I co-founded <a href="https://apps.apple.com/us/app/jefe-voice-estimate-maker/id6761315709">Jefe</a>, an iPhone app that turns a contractor's spoken site walk into a finished estimate.</p>
-    <ul class="links">
-      <li><a href="https://www.linkedin.com/in/isaac-wallace-menge/">LinkedIn</a></li>
-      <li><a href="https://github.com/sacmeng">GitHub</a></li>
-      <li><a href="https://apps.apple.com/us/app/jefe-voice-estimate-maker/id6761315709">Jefe on the App Store</a></li>
-    </ul>
-    <p class="where">San Francisco, CA</p>
+    <div class="side-inner">
+      <h1>Isaac Wallace&#8209;Menge</h1>
+      <p class="title">Analyst at Deloitte Consulting.<br>Co-founder of Jefe.</p>
+      <p class="bio">I studied finance at CU Boulder, spent a summer working on a salmon boat in Bristol Bay, and now work at Deloitte in San Francisco on AI, real estate development and strategy projects.</p>
+      <p class="bio">On the side I co-founded <a href="https://apps.apple.com/us/app/jefe-voice-estimate-maker/id6761315709">Jefe</a>, for contractors who'd rather not spend their evenings typing up estimates. They talk through the job and the app writes it.</p>
+      <ul class="links">
+        <li><a href="https://www.linkedin.com/in/isaac-wallace-menge/">LinkedIn</a></li>
+        <li><a href="https://github.com/sacmeng">GitHub</a></li>
+        <li><a href="https://apps.apple.com/us/app/jefe-voice-estimate-maker/id6761315709">Jefe on the App Store</a></li>
+      </ul>
+      <p class="where">San Francisco, CA</p>
+    </div>
   </header>
 
   <main class="main">
 
-    <section aria-labelledby="exp-h">
-      <h2 id="exp-h">Experience</h2>
-      <div class="stack">
+    <section aria-labelledby="building-h">
+      <h2 id="building-h">Building</h2>
+      <article class="venture">
+        <div class="venture-head">
+          <img src="jefe-icon.png" alt="Jefe app icon" width="48" height="48">
+          <div>
+            <h3>Jefe</h3>
+            <span class="meta">Co-founder and product lead, since January 2026</span>
+          </div>
+        </div>
+        <p>Jefe is an iPhone app for landscapers, plumbers, electricians, HVAC techs and home inspectors. You walk the job and talk through it the way you'd brief your crew, and Jefe writes the estimate, invoice or work order. If it didn't hear a price, it leaves the line open and flags it instead of guessing.</p>
+        <ul class="shots" aria-label="Jefe screenshots">
+          <li><img src="img/jefe-estimate.jpg" alt="An estimate Jefe wrote from a spoken site walk, with line items and prices" loading="lazy" width="414" height="900"></li>
+          <li><img src="img/jefe-board.jpg" alt="Jefe's job board" loading="lazy" width="414" height="900"></li>
+          <li><img src="img/jefe-work-order.jpg" alt="A work order generated by Jefe" loading="lazy" width="414" height="900"></li>
+        </ul>
+        <p>We went from beta to the App Store in September 2026, shipping 100+ builds in five weeks along the way. I own product, pricing and go-to-market: subscriptions and a free tier, paid ads, the App Store listing and contractor groups, with conversion tracked weekly. Transcription runs on the phone, so job-site audio never leaves the device.</p>
+        <p><a href="https://apps.apple.com/us/app/jefe-voice-estimate-maker/id6761315709">See Jefe on the App Store</a></p>
+      </article>
+    </section>
 
-        <article class="entry">
-          <header>
-            <h3>Deloitte Consulting</h3>
-            <time>Jan 2026 – present</time>
-          </header>
-          <span class="role">Analyst, San Francisco</span>
-          <ul>
-            <li>Lead development of 10 role-specific AI agents connected to Oracle ERP for a global supplier's 5,000+ supply chain employees. The agents are now being rolled out to other clients.</li>
-            <li>Built a custom MCP server that connects AI to a program's financials and vendor contracts. It drafts SOWs, levels bids and reviews change orders, cutting manual work by 30%.</li>
-            <li>Run project controls for a $280M+ multi-site retail renovation program, including the model that decides which stores are renovated in each wave. Main client contact for 5 general contractors and 10 vendors.</li>
-            <li>Built the baseline cost estimate for a standard store renovation, leveled $3M+ in general contractor bids, and caught $500K+ in pricing errors in change orders.</li>
-            <li>Coordinated finance, supply chain and HR workstreams for a 20,000+ user ERP go&#8209;live, tracking risks daily and briefing the C&#8209;suite to keep the launch on schedule.</li>
-            <li>Demoed an AI supply chain solution to executives at Oracle AI World 2026, which led to 50+ follow-up conversations and deep-dive demos.</li>
-          </ul>
+    <section aria-labelledby="work-h">
+      <h2 id="work-h">Selected work</h2>
+      <div class="work">
+
+        <article class="piece">
+          <h3>AI agents for a global supply chain</h3>
+          <span class="meta">Deloitte, 2026</span>
+          <p>I lead development of 10 role-specific AI agents that sit on top of Oracle ERP for a global supplier's 5,000+ supply chain employees. I demoed the solution to executives at Oracle AI World 2026, which turned into 50+ follow-up conversations, and the agents are now being rolled out to other clients.</p>
         </article>
 
-        <article class="entry">
-          <header>
-            <h3 class="jefe-name"><img src="jefe-icon.png" alt="" width="28" height="28">Jefe</h3>
-            <time>Jan 2026 – present</time>
-          </header>
-          <span class="role">Co-founder and product lead</span>
-          <p class="note">An iPhone app for landscapers, plumbers, electricians, HVAC techs and home inspectors. You talk through a job as you walk it, and Jefe turns the recording into an estimate, invoice or work order. When it isn't sure of a price, it flags the line instead of guessing. Live on the App Store since September 2026.</p>
-          <ul>
-            <li>Shipped 100+ builds in 5 weeks, taking the app from beta to a production release on the App Store.</li>
-            <li>Speech-to-text runs on the phone, so job-site audio never leaves the device. An LLM turns the transcript into line items.</li>
-            <li>Set pricing, built subscriptions and a free tier, and run go-to-market through paid ads, the App Store and contractor groups, tracking conversion weekly.</li>
-          </ul>
+        <article class="piece">
+          <h3>An AI assistant for a capital program's paperwork</h3>
+          <span class="meta">Deloitte, 2026</span>
+          <p>I built a custom MCP server that connects AI to a program's financials and vendor contracts. It drafts SOWs, levels bids and reviews change orders, cutting the team's manual work by 30%.</p>
         </article>
 
-        <article class="entry">
-          <header>
-            <h3>Hitachi Energy</h3>
-            <time>May – Dec 2024</time>
-          </header>
-          <span class="role">Energy market analyst intern, Broomfield, CO</span>
-          <p class="note">Built Power BI dashboards tracking 10+ daily energy market data pipelines, and SQL and Python ETL scripts that added 30,000+ records to production datasets.</p>
+        <article class="piece">
+          <h3>Keeping a $280M+ renovation program on budget</h3>
+          <span class="meta">Deloitte, 2026</span>
+          <p>I run project controls for a multi-site retail renovation program, including the model that decides which stores go in each wave. I built the baseline cost estimate for a standard renovation, leveled $3M+ in contractor bids, and caught $500K+ in pricing errors in change orders. Day to day, I'm the client's main contact for 5 general contractors and 10 vendors.</p>
         </article>
 
-        <article class="entry">
-          <header>
-            <h3>AMP Robotics</h3>
-            <time>Nov 2023 – Apr 2024</time>
-          </header>
-          <span class="role">Finance intern, Louisville, CO</span>
-          <p class="note">Built a project finance model executives used to rank projects and forecast revenue and EBITDA. Produced 10+ monthly budget reports and maintained the Oracle PBCS planning system.</p>
-        </article>
-
-        <article class="entry">
-          <header>
-            <h3>DivcoWest</h3>
-            <time>Jun – Aug 2023</time>
-          </header>
-          <span class="role">Summer analyst, San Francisco</span>
-          <p class="note">Underwrote a 31-acre mixed-use redevelopment and analyzed 450+ prospective tenants.</p>
-        </article>
-
-        <article class="entry">
-          <header>
-            <h3>Earthvisionz</h3>
-            <time>Jan – Jul 2023</time>
-          </header>
-          <span class="role">Product marketing intern, Boulder, CO</span>
-        </article>
-
-        <article class="entry">
-          <header>
-            <h3>Commercial salmon fishing</h3>
-            <time>Summer 2022</time>
-          </header>
-          <span class="role">Deckhand, Bristol Bay, AK</span>
-          <p class="note">Helped land a boat-record 100,000+ lb sockeye catch while handling safety checks on deck.</p>
+        <article class="piece">
+          <h3>A project finance model for AMP Robotics</h3>
+          <span class="meta">AMP Robotics, 2024</span>
+          <p>I built the project finance model AMP's executives used to rank projects and forecast revenue and EBITDA, alongside monthly budget reporting in Oracle PBCS.</p>
         </article>
 
       </div>
     </section>
 
-    <section aria-labelledby="edu-h">
-      <h2 id="edu-h">Education</h2>
-      <article class="entry">
-        <header>
-          <h3>University of Colorado Boulder</h3>
-          <time>Dec 2024</time>
-        </header>
-        <span class="role">Leeds School of Business</span>
-        <p class="note">B.S. Business Administration in Finance and Business Analytics, with Honors. 3.75 GPA, Dean's List 6 of 7 semesters.</p>
+    <section aria-labelledby="side-h">
+      <h2 id="side-h">Side project</h2>
+      <article class="project">
+        <figure><a href="https://sacmeng.github.io/baja-trip/"><img src="img/baja-map.jpg" alt="Interactive map of surf and spearfishing stops down the Baja coast" loading="lazy" width="1200" height="750"></a></figure>
+        <h3><a href="https://sacmeng.github.io/baja-trip/">Baja surf trip map</a></h3>
+        <p>An interactive map I built for a surf and spearfishing trip down Baja with friends. Every stop is scored for our late-August dates, with forecast windows, where to camp and notes for the drive.</p>
       </article>
     </section>
 
-    <section aria-labelledby="skills-h">
-      <h2 id="skills-h">Skills</h2>
-      <p>Product management, AI agents and LLM applications, MCP, Claude Code, program management and project controls, cost estimating and bid leveling, financial modeling and project finance, vendor management, go-to-market. SQL, Python, ETL, Power BI, Excel, Oracle ERP and PBCS.</p>
+    <section aria-labelledby="path-h">
+      <h2 id="path-h">Path</h2>
+      <ol class="path" reversed>
+        <li><span class="yr">2026</span><span><b>Deloitte Consulting</b>, analyst. <span class="where-at">AI, real estate development and strategy projects, including a 20,000+ user ERP go-live.</span></span></li>
+        <li><span class="yr">2026</span><span><b>Jefe</b>, co-founder and product lead</span></li>
+        <li><span class="yr">2024</span><span><b>Hitachi Energy</b>, energy market analyst intern. <span class="where-at">Power BI dashboards and SQL/Python data pipelines.</span></span></li>
+        <li><span class="yr">2023–24</span><span><b>AMP Robotics</b>, finance intern</span></li>
+        <li><span class="yr">2023</span><span><b>DivcoWest</b>, summer analyst. <span class="where-at">Underwrote a 31-acre mixed-use redevelopment.</span></span></li>
+        <li><span class="yr">2023</span><span><b>Earthvisionz</b>, product marketing intern</span></li>
+        <li><span class="yr">2022</span><span><b>Commercial salmon fishing</b>, deckhand in Bristol Bay. <span class="where-at">A boat-record 100,000+ lb season.</span></span></li>
+        <li><span class="yr">2024</span><span><b>University of Colorado Boulder</b>, B.S. in Finance and Business Analytics with Honors, Leeds School of Business</span></li>
+      </ol>
+      <p class="meta">The full résumé lives on <a href="https://www.linkedin.com/in/isaac-wallace-menge/">LinkedIn</a>. Tools I use most: SQL, Python, Power BI, Excel, Oracle ERP and PBCS, MCP and Claude Code.</p>
     </section>
 
     <section aria-labelledby="else-h">
       <h2 id="else-h">Outside work</h2>
-      <p>Fly fishing, surfing and traveling to surf, classic rock, Toyotas and sourdough. I also built an <a href="https://github.com/sacmeng/baja-trip">interactive map for a Baja surf trip</a>.</p>
+      <p>Fly fishing, surfing and traveling to surf, classic rock, Toyotas and sourdough.</p>
     </section>
 
+    <footer>Isaac Wallace-Menge, San Francisco</footer>
+
   </main>
-
-  <footer>Isaac Wallace-Menge, San Francisco</footer>
-
 </div>
 </body>
 </html>
